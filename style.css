@@ -115,7 +115,7 @@ p {
 
 
 #hero {
-  background-image: url("img/hero.png");
+  background-image: url("assets/hero.png");
   height: 90vh;
   width: 100%;
   background-size: cover;
@@ -290,7 +290,95 @@ p {
   padding-bottom: 20px;
 }
 
-@media (max-width:799px) {
+/* Section Contact Us */
+.cu-section {
+	background-color: #5A4C38;
+	padding-top: 100px;
+	padding: 100px;
+	padding-left: 100px;
+	padding-right: 100px;
+}
+
+.cu-title {
+	color: #F7F3E3;
+	text-align: center;
+}
+
+.cu-title h2 {
+	margin-bottom: 30px;
+}
+
+.cu-title p {
+	text-align: left;
+	padding-bottom: 50px;
+}
+
+.cu-info {
+	position: relative;
+	display: flex;
+	gap: 200px;
+	justify-content: center;
+}
+
+#contactUs .ic {
+	width: 50px;
+	height: 50px;
+}
+
+#contactUs .ic-box {
+  display: flex;
+  justify-content: start;
+  vertical-align: middle;
+	margin-bottom: 50px;
+}
+
+#contactUs .cu-details {
+  display: inline-block;
+  vertical-align: middle;
+  color: #F7F3E3;
+  margin-top: 5px;
+	margin-left: 50px;
+	font-size: 24px;
+	font-weight: 400;
+  line-height: 36px;
+}
+
+/* Section Footer */
+footer {
+  background-color: #212121;
+  padding: 100px 100px 100px 100px;
+}
+
+.footer-left, .footer-center, .footer-right {
+  display: inline-block;
+  vertical-align: top;
+  color: #E3E6F3;
+}
+
+.footer-left {
+  width: 350px;
+  margin-right: 300px;
+}
+
+.footer-left img {
+  width: 150px;
+  padding-bottom: 20px;
+}
+
+.footer-center {
+  margin-right: 300px;
+}
+
+.ftr-title {
+  padding-bottom: 20px;
+}
+
+.ftr-details p {
+  padding-bottom: 10px;
+}
+
+
+@media (max-width:800px) {
 
   #navbar {
     display: flex;
