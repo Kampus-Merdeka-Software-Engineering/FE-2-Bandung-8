@@ -50,7 +50,7 @@ p {
 } */
 
 /* ? Header Start */
-#header {
+.nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -63,20 +63,20 @@ p {
   left: 0;
 }
 
-#navbar {
+.navigation {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 50px;
 }
 
-#navbar li {
+.navigation li {
   list-style: none;
   padding: 0 20px;
   position: relative;
 }
 
-#navbar li a {
+.navigation li a {
   text-decoration: none;
   font-size: 24px;
   font-weight: 300;
@@ -88,13 +88,13 @@ p {
   -o-transition: 0.3s ease;
 }
 
-#navbar li a:hover,
-#navbar li a.active {
+.navigation li a:hover,
+.navigation li a.active {
   color: #5A4C38;
 }
 
-#navbar li a.active::after,
-#navbar li a:hover::after {
+.navigation li a.active::after,
+.navigation li a:hover::after {
   content: "";
   width: 30%;
   height: 2px;
@@ -114,7 +114,7 @@ p {
 }
 
 
-#hero {
+.hero-sct {
   background-image: url("assets/hero.png");
   height: 90vh;
   width: 100%;
@@ -127,26 +127,26 @@ p {
   justify-content: center;
 }
 
-#hero h4 {
+.hero-sct h4 {
   color: #F7F3E3;
   padding-bottom: 15px;
 }
 
-#hero h1 {
+.hero-sct h1 {
   color: #F7F3E3;
 }
 
-#hero h2 {
+.hero-sct h2 {
   color: #53917E;
   font-size: 64px;
 }
 
-#hero p {
+.hero-sct p {
   margin-top: 20px;
   color: #fff;
 }
 
-#hero button {
+.hero-sct button {
   margin-top: 50px;
   background-color: #53917E;
   border-radius: 20px;
@@ -165,27 +165,27 @@ p {
 
 /* Section book */
 
-.section-book {
+.book-sct {
   background-color: #212121;
   padding: 100px 100px 100px 100px;
 }
 
-.section-book h2, p{
+.book-sct h2, p{
   color: #E3E6F3;
 }
 
-#book {
+.book-sct {
   padding-top: 100px;
   text-align: center;
 }
 
-#book h3 {
+.book-sct h3 {
   color: #E3E6F3;
   padding-top: 50px;
   text-align: start;
 }
 
-#transport {
+.step1-book {
   background-color: #5A4C38;
   display: flex;
   justify-content: center;
@@ -199,11 +199,11 @@ p {
   -o-border-radius: 30px;
 }
 
-#transport .ic {
+.step1-book .ic {
   padding: 25px;
 }
 
-#transport .fe-box {
+.step1-book .fe-box {
   width: 100px;
   height: 100px;
   background: #F7F3E3;
@@ -214,21 +214,21 @@ p {
   -o-border-radius: 100%;
 }
 
-#transport .fe-box img {
+.step1-book .fe-box img {
   width: 40px;
   height: 40px;
   margin-top: 10px;
   margin-bottom: 5px;
 }
 
-#transport p {
+.step1-book p {
   text-align: center;
   color: #F7F3E3;
 }
 
 
 /* Section Company */
-#company-profile {
+.cp-sct {
   padding: 100px 100px 100px 100px;
   background-color: #F7F3E3;
 }
@@ -268,7 +268,7 @@ p {
   height: 430px;
 }
 
-#company-profile img {
+.cp-sct img {
   border-radius: 10px;
   object-fit: cover;
   -webkit-border-radius: 10px;
@@ -291,7 +291,7 @@ p {
 }
 
 /* Section Contact Us */
-.cu-section {
+.cu-sct {
 	background-color: #5A4C38;
 	padding-top: 100px;
 	padding: 100px;
@@ -320,19 +320,19 @@ p {
 	justify-content: center;
 }
 
-#contactUs .ic {
+.cu-sct .ic {
 	width: 50px;
 	height: 50px;
 }
 
-#contactUs .ic-box {
+.cu-sct .ic-box {
   display: flex;
   justify-content: start;
   vertical-align: middle;
 	margin-bottom: 50px;
 }
 
-#contactUs .cu-details {
+.cu-sct .cu-details {
   display: inline-block;
   vertical-align: middle;
   color: #F7F3E3;
@@ -380,7 +380,7 @@ footer {
 
 @media (max-width:800px) {
 
-  #navbar {
+  .navigation {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -399,11 +399,11 @@ footer {
     -o-transition: 0.3s;
   }
 
-  #navbar.active {
+  .navigation.active {
     right: 0px;
   }
 
-  #navbar li {
+  .navigation li {
     margin-bottom: 30px;
     padding-bottom: 5px;
   }
@@ -428,22 +428,22 @@ footer {
     font-size: 24px;
   }
 
-  #hero {
+  .hero-sct {
     height: 100vh;
     padding: 50px 50px 50px 50px;
     background-position: top 30% right 30%;
   }
 
-  #transport {
+  .step1-book {
     justify-content: center;
     margin: 20px 20px;
   }
 
-  #book .pro-container {
+  .book-sct .pro-container {
     justify-content: center;
   }
 
-  #book .pro {
+  .book-sct .pro {
     margin: 15px;
   }
 }
