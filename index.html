@@ -41,25 +41,88 @@
     <h2>Where would you like to go?</h2>
     <p>Tell us your destination and we'll help you get there!</p>
     
-    <h3>1. Choose transportation</h>
-    <div id="transport" class="step1-book">
-      <div>
-        <img src="assets/feature/airline.png" class="ic fe-box">
-        <p>Airline</p>
+    <form action="#">
+      <h3>1. Choose transportation</h3>
+      <div class="form-box stp1-book" id="transport">
+        <div>
+          <img src="assets/feature/airline.png" class="ic fe-box">
+          <p>Airline</p>
+        </div>
+        <div>
+          <img src="assets/feature/train.png" class="ic fe-box">
+          <p>Train</p>
+        </div>
+        <div>
+          <img src="assets/feature/bus1.png" class="ic fe-box">
+          <p>Bus</p>
+        </div>
+        <div>
+          <img src="assets/feature/ship.png" class="ic fe-box">
+          <p>Ship</p>
+        </div>
       </div>
-      <div>
-        <img src="assets/feature/train.png" class="ic fe-box">
-        <p>Train</p>
+
+      <h3>2. Choose Destination, Accommodation & Date</h3>
+      <div class="form-box stp2-book">
+        <div class="form-sct dst-form">
+          <h5>Destination</h5>
+          <div class="container">
+            <div class="inpt-from">
+              <label for="from-dst">from</label>
+              <input type="text" id="from-dst" name="from-dst">
+            </div>
+            <div class="inpt-to">
+              <label for="to-dst">to</label>
+              <input type="text" id="to-dst" name="to-dst">
+            </div>
+          </div>
+        </div>
+        <div class="form-sct acmd-form">
+          <h5>Accommodation</h5>
+          <select name="acmd" id="acmd">
+            <option value="1">Choose transportation</option>
+            <option value="#"></option>
+          </select>
+        </div>
+        <div class="form-sct date-form">
+          <h5>Date</h5>
+          <input type="date">
+        </div>
       </div>
-      <div>
-        <img src="assets/feature/bus1.png" class="ic fe-box">
-        <p>Bus</p>
+      <div class="price">
+        <div class="prc-details">
+          <span>Price :</span><h4>Rp 250.000,-</h4>
+        </div>
       </div>
-      <div>
-        <img src="assets/feature/ship.png" class="ic fe-box">
-        <p>Ship</p>
+
+      <h3>3. Fill Your Personal Data</h3>
+      <div class="form-box stp3-book">
+        <div class="form-sct name-form">
+          <h5>Full name</h5>
+          <div class="container">
+            <div class="inpt-fname">
+              <label for="fname">first name</label>
+              <input type="text" id="fname" name="fname">
+            </div>
+            <div class="inpt-lname">
+              <label for="lname">last name</label>
+              <input type="text" id="lname" name="lname">
+            </div>
+          </div>
+        </div>
+        <div class="form-sct mail-form">
+          <label for="email"><h5>Email</h5></label>
+          <input type="email" id="email" name="email" placeholder="Your Email">
+        </div>
+        <div class="form-sct phone-form">
+          <label for="phone"><h5>Phone</h5></label>
+          <input type="text" id="phone" name="phone" placeholder="Your Phone Number">
+        </div>
+
+        <button>Checkout</button>
       </div>
-    </div>
+    </form>
+    
   </section>
 
   <section class="cp-sct" id="company-profile">
