@@ -167,15 +167,11 @@ p {
 .book-sct {
   background-color: #212121;
   padding: 100px 100px 100px 100px;
+  text-align: center;
 }
 
 .book-sct h2, p{
   color: #E3E6F3;
-}
-
-.book-sct {
-  padding-top: 100px;
-  text-align: center;
 }
 
 .book-sct h3 {
@@ -225,6 +221,18 @@ p {
   height: 40px;
   margin-top: 10px;
   margin-bottom: 5px;
+}
+
+.stp1-book button {
+  background-color: transparent;
+  border: none;
+  padding: 20px 20px 20px 20px;
+}
+
+.stp1-book button:hover {
+  background-color: #212121;
+  border: none;
+  border-radius: 50px;
 }
 
 .form-sct {
@@ -578,22 +586,123 @@ footer {
     font-size: 24px;
   }
 
+  h1 {
+    font-size: 56px;
+    line-height: 96px;
+    font-weight: 600;
+  }
+  
+  h2 {
+    font-size: 40px;
+    line-height: 72px;
+    font-weight: 600;
+  }
+  
+  h3 {
+    font-size: 28px;
+    line-height: 54px;
+    font-weight: 500;
+  }
+  
+  h4 {
+    font-size: 24px;
+    line-height: 48px;
+    font-weight: 500;
+  }
+  
+  h5 {
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 500;
+  }
+  
+  p {
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 300;
+  }
+
   .hero-sct {
     height: 100vh;
     padding: 50px 50px 50px 50px;
     background-position: top 30% right 30%;
   }
 
+  .book-sct {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .form-sct label {
+    color: #F7F3E3;
+    font-size: 16pt;
+    font-weight: 300;
+    padding-right: 25px;
+  }
+
+  .form-sct input {
+    box-sizing: border-box;
+    background-color: transparent;
+    border-radius: 30px;
+    border-style: solid ;
+    border-color: #F7F3E3;
+    border-width: 3px;
+    width: 250px;
+    padding: 5px 20px 5px 20px;
+    font-size: 16pt;
+    color: #F7F3E3;
+  }
+
   .stp1-book {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     margin: 20px 20px;
+    padding: 50px 50px 50px 50px;
+    gap: 125px;
   }
 
-  .book-sct .pro-container {
-    justify-content: center;
+  .stp2-book .dst-form,
+  .stp2-book .dst-form h5 {
+    display: block;
+    text-align: left;
+    padding-bottom: 10px;
   }
 
-  .book-sct .pro {
-    margin: 15px;
+  .stp2-book .dst-form .container {
+    display: flex;
+    gap: 20px;
   }
+  
+  .stp2-book .acmd-form,
+  .stp2-book .acmd-form h5 {
+    display: block;
+    text-align: left;
+    padding-bottom: 10px;
+  }
+
+  .stp2-book .acmd-form select {
+    box-sizing: border-box;
+    background-color: #F7F3E3;
+    border-radius: 30px;
+    border-style: solid ;
+    border-color: #F7F3E3;
+    border-width: 3px;
+    width: 520px;
+    color: #5A4C38;
+    font-size: 24px;
+    padding: 5px 5px 5px 20px;
+    margin-bottom: 10px;
+  }
+
+  .stp2-book .date-form,
+  .stp2-book .date-form h5 {
+    display: block;
+    text-align: left;
+  }
+
+  .stp2-book .date-form h5 {
+    padding-bottom: 10px;
+  }
+
 }
