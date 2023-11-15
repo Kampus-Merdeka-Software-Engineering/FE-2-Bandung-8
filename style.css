@@ -198,7 +198,10 @@ p {
 .stp1-book {
   display: flex;
   justify-content: center;
-  gap: 250px;
+}
+
+.stp1-book .icon-transport {
+  margin: 0px 125px 0px 10px;
 }
 
 .stp1-book .ic {
@@ -438,13 +441,13 @@ p {
   padding-left: 100px;
 }
 
-.cp-details p {
-  color: #212121;
-}
-
 .benefits h4 {
   color: #5A4C38;
   padding-bottom: 20px;
+}
+
+.cp-details p {
+  color: #212121;
 }
 
 /* Section Contact Us */
@@ -622,11 +625,15 @@ footer {
     font-weight: 300;
   }
 
+  /* Hero Section */
+
   .hero-sct {
     height: 100vh;
     padding: 50px 50px 50px 50px;
     background-position: top 30% right 30%;
   }
+
+  /* Book Section */
 
   .book-sct {
     padding-left: 50px;
@@ -659,7 +666,10 @@ footer {
     justify-content: center;
     margin: 20px 20px;
     padding: 50px 50px 50px 50px;
-    gap: 125px;
+  }
+
+  .stp1-book .icon-transport {
+    margin: 10px 50px;
   }
 
   .stp2-book .dst-form,
@@ -678,6 +688,7 @@ footer {
   .stp2-book .acmd-form h5 {
     display: block;
     text-align: left;
+    padding-top: 10px;
     padding-bottom: 10px;
   }
 
@@ -703,6 +714,32 @@ footer {
 
   .stp2-book .date-form h5 {
     padding-bottom: 10px;
+  } 
+
+  /* Section Company */
+
+  .cp-header {
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
   }
 
+  .cp-box {
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cp-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+  }
+
+  .cp-box .cp-details {
+    display: block;
+    padding-left: 0;
+    text-align: center;
+  }
 }

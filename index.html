@@ -42,93 +42,93 @@
     <p>Tell us your destination and we'll help you get there!</p>
     
     <form action="#">
-      <h3>1. Choose transportation</h3>
-      <div class="form-box stp1-book" id="transport">
-        <div>
-          <button>
-            <img src="assets/feature/airline.png" class="ic fe-box">
-            <p>Airline</p>
-          </button>
-        </div>
-        <div>
-          <button>
-            <img src="assets/feature/train.png" class="ic fe-box">
-            <p>Train</p>
-          </button>
-        </div>
-        <div>
-          <button>
-            <img src="assets/feature/bus1.png" class="ic fe-box">
-            <p>Bus</p>
-          </button>
-        </div>
-        <div>
-          <button>
-            <img src="assets/feature/ship.png" class="ic fe-box">
-            <p>Ship</p>
-          </button>
-        </div>
-      </div>
-
-      <h3>2. Choose Destination, Accommodation & Date</h3>
-      <div class="form-box stp2-book">
-        <div class="form-sct dst-form">
-          <h5>Destination</h5>
-          <div class="container">
-            <div class="inpt-from">
-              <label for="from-dst">from</label>
-              <input type="text" id="from-dst" name="from-dst">
-            </div>
-            <div class="inpt-to">
-              <label for="to-dst">to</label>
-              <input type="text" id="to-dst" name="to-dst">
-            </div>
+      <div class="step1" id="stepOne">
+        <h3>1. Choose transportation</h3>
+        <div class="form-box stp1-book" id="transport">
+          <div class="icon-transport">
+            <button>
+              <img src="assets/feature/airline.png" class="ic fe-box">
+              <p>Airline</p>
+            </button>
+          </div>
+          <div class="icon-transport">
+            <button>
+              <img src="assets/feature/train.png" class="ic fe-box">
+              <p>Train</p>
+            </button>
+          </div>
+          <div class="icon-transport">
+            <button>
+              <img src="assets/feature/bus1.png" class="ic fe-box">
+              <p>Bus</p>
+            </button>
+          </div>
+          <div class="icon-transport">
+            <button>
+              <img src="assets/feature/ship.png" class="ic fe-box">
+              <p>Ship</p>
+            </button>
           </div>
         </div>
-        <div class="form-sct acmd-form">
-          <h5>Accommodation</h5>
-          <select name="acmd" id="acmd">
-            <option value="1">Choose transportation</option>
-            <option value="#"></option>
-          </select>
-        </div>
-        <div class="form-sct date-form">
-          <h5>Date</h5>
-          <input type="date">
-        </div>
       </div>
-      <div class="price">
-        <div class="prc-details">
-          <span>Price :</span><h4>Rp 250.000,-</h4>
+
+      <div class="step2" id="stepTwo">
+        <h3>2. Choose Destination, Accommodation & Date</h3>
+        <div class="form-box stp2-book">
+          <div class="form-sct dst-form">
+            <h5>Destination</h5>
+            <div class="container">
+              <div class="inpt-from">
+                <label for="from-dst">from</label>
+                <input type="text" id="from-dst" name="from-dst">
+              </div>
+              <div class="inpt-to">
+                <label for="to-dst">to</label>
+                <input type="text" id="to-dst" name="to-dst">
+              </div>
+            </div>
+          </div>
+          <div class="form-sct acmd-form">
+            <h5>Accommodation</h5>
+            <select name="acmd" id="acmd">
+              <option value="1">Choose transportation</option>
+              <option value="#"></option>
+            </select>
+          </div>
+          <div class="form-sct date-form">
+            <h5>Date</h5>
+            <input type="date">
+          </div>
+        </div>
+        <div class="price">
+          <div class="prc-details">
+            <span>Price :</span><h4>Rp 250.000,-</h4>
+          </div>
         </div>
       </div>
 
-      <h3>3. Fill Your Personal Data</h3>
-      <div class="form-box stp3-book">
-        <div class="form-sct name-form">
-          <h5>Full name</h5>
-          <div class="container">
+      <div class="step3" id="stepThree">
+        <h3>3. Fill Your Personal Data</h3>
+        <div class="form-box stp3-book">
+          <div class="form-sct name-form">
+            <h5>Full name*</h5>
             <div class="inpt-fname">
-              <input type="text" id="fname" name="fname" placeholder="First name">
-            </div>
-            <div class="inpt-lname">
-              <input type="text" id="lname" name="lname" placeholder="Last name">
+              <input type="text" id="name" name="name" placeholder="Your name">
             </div>
           </div>
+          <div class="form-sct mail-form">
+            <label for="email"><h5>Email*</h5></label>
+            <input type="email" id="email" name="email" placeholder="Your Email">
+          </div>
+          <div class="form-sct phone-form">
+            <label for="phone"><h5>Phone*</h5></label>
+            <input type="text" id="phone" name="phone" placeholder="Your Phone Number">
+          </div>
+  
+          <button>Checkout</button>
         </div>
-        <div class="form-sct mail-form">
-          <label for="email"><h5>Email</h5></label>
-          <input type="email" id="email" name="email" placeholder="Your Email">
-        </div>
-        <div class="form-sct phone-form">
-          <label for="phone"><h5>Phone</h5></label>
-          <input type="text" id="phone" name="phone" placeholder="Your Phone Number">
-        </div>
-
-        <button>Checkout</button>
       </div>
     </form>
-    
   </section>
 
   <section class="cp-sct" id="company-profile">
@@ -140,27 +140,33 @@
     </div>
     <div class="benefits">
       <div class="cp-box" id="cp1">
-        <div class="cp-img">
-          <img src="assets/companyprofile/cp1.png" alt="">
-        </div>
+        <figure>
+          <div class="cp-img">
+            <img src="assets/companyprofile/cp1.png" alt="">
+          </div>
+        </figure>
         <div class="cp-details">
           <h4>Ease in Your Hand</h4>
           <p>With just a few taps on your smartphone, you can explore your city or explore new places. The Rovera is the door to easy modern mobility.</p>
         </div>
       </div>
       <div class="cp-box" id="cp2">
-        <div class="cp-img">
-          <img src="assets/companyprofile/cp2.png" alt="">
-        </div>
+        <figure>
+          <div class="cp-img">
+            <img src="assets/companyprofile/cp2.png" alt="">
+          </div>
+        </figure>
         <div class="cp-details">
           <h4>Affordable Price</h4>
           <p>We believe that adventure should be affordable for everyone. With Rovera, you not only get transportation, but also save on your expenses</p>
         </div>
       </div>
       <div class="cp-box" id="cp3">
-        <div class="cp-img">
-          <img src="assets/companyprofile/cp3.png" alt="">
-        </div>
+        <figure>
+          <div class="cp-img">
+            <img src="assets/companyprofile/cp3.png" alt="">
+          </div>
+        </figure>
         <div class="cp-details">
           <h4>Customer Service Ready to Help</h4>
           <p>Our team is always ready to help you. Special questions or requests? We are available for you 24/7.</p>
