@@ -517,7 +517,7 @@ footer {
 
 .footer-left {
   width: 350px;
-  margin-right: 300px;
+  margin-right: 150px;
 }
 
 .footer-left img {
@@ -526,7 +526,7 @@ footer {
 }
 
 .footer-center {
-  margin-right: 300px;
+  margin-right: 200px;
 }
 
 .ftr-title {
@@ -742,4 +742,42 @@ footer {
     padding-left: 0;
     text-align: center;
   }
+
+  /* Contact Us */
+
+  .cu-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .cu-info {
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+  }
+
+  .cu-sct .ic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cu-sct .cu-details{
+    display: block;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  /* Footer */
+
+  .footer-left, .footer-center, .footer-right {
+		flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 30px;
+		text-align: center;
+	}
+  
 }
