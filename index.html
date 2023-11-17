@@ -7,97 +7,99 @@
   <link rel="icon" href="assets/logo.png">
   <title>Travel Website</title>
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
   
-  <section class="nav" id="header">
+  <nav class="nav" id="header">
     <a href="#"><img src="assets/logo-bk.png" class="logo" alt=""></a>
     <div>
       <ul class="navigation" id="navbar">
-        <li><a class="active" href="#">Home</a></li>
-        <li><a href="#">Book</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="#">History</a></li>
-        <a href="#" id="close"><i class="far fa-times"></i></a>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#book">Book</a></li>
+        <li><a href="#aboutUs">About Us</a></li>
+        <li><a href="#contactUs">Contact Us</a></li>
+        <!-- <li><a href="#">History</a></li> -->
+        <a class="close-nav" id="closeNav"><i class="far fa-times"></i></a>
       </ul>
     </div>
     <div id="mobile">
       <i id="bar" class="fas fa-outdent"></i>
     </div>
-  </section>
+  </nav>
 
   <section class="hero-sct" id="hero">
     <h4>Welcome to Rovera</h4>
     <h1>Have a good trip</h1>
     <h2>To your Destination</h2>
     <p>Your journey starts here! Make your trip easier <br> and more comfortable</p>
-    <button>Book Now</button>
+    <button><a href="#book">Book Now</a></button>
   </section>
 
   <!-- Section Book -->
-  <section id="book" class="book-sct">
+  <section class="book-sct" id="book">
     <h2>Where would you like to go?</h2>
     <p>Tell us your destination and we'll help you get there!</p>
     
-    <form action="#">
+    <form name="book-form">
       <div class="step1" id="stepOne">
         <h3>1. Choose transportation</h3>
         <div class="form-box stp1-book" id="transport">
-          <div class="icon-transport">
-            <button>
-              <img src="assets/feature/airline.png" class="ic fe-box">
+
+          <div class="category icon-transport" onclick="selectCategory(1)">
+            <button id="airline">
+              <img src="assets/feature/airline.png" class="ic fe-box" alt="airline">
               <p>Airline</p>
             </button>
           </div>
-          <div class="icon-transport">
-            <button>
-              <img src="assets/feature/train.png" class="ic fe-box">
+          <div class="category icon-transport" onclick="selectCategory(2)">
+            <button id="train">
+              <img src="assets/feature/train.png" class="ic fe-box" alt="train">
               <p>Train</p>
             </button>
           </div>
-          <div class="icon-transport">
-            <button>
-              <img src="assets/feature/bus1.png" class="ic fe-box">
+          <div class="category icon-transport" onclick="selectCategory(3)">
+            <button id="bus">
+              <img src="assets/feature/bus1.png" class="ic fe-box" alt="bus">
               <p>Bus</p>
             </button>
           </div>
-          <div class="icon-transport">
-            <button>
-              <img src="assets/feature/ship.png" class="ic fe-box">
+          <div class="category icon-transport" onclick="selectCategory(4)">
+            <button id="ship">
+              <img src="assets/feature/ship.png" class="ic fe-box" alt="ship">
               <p>Ship</p>
             </button>
           </div>
+
         </div>
       </div>
 
-      <div class="step2" id="stepTwo">
+      <div class="step2 none" id="form2">
         <h3>2. Choose Destination, Accommodation & Date</h3>
-        <div class="form-box stp2-book">
+        <div class="form-box stp2-book" id="formTwo">
           <div class="form-sct dst-form">
             <h5>Destination</h5>
             <div class="container">
               <div class="inpt-from">
                 <label for="from-dst">from</label>
-                <input type="text" id="from-dst" name="from-dst">
+                <input type="text" id="from-dst" name="from-dst" oninput="validateFrom()" required>
               </div>
               <div class="inpt-to">
                 <label for="to-dst">to</label>
-                <input type="text" id="to-dst" name="to-dst">
+                <input type="text" id="to-dst" name="to-dst" oninput="validateFrom()" required>
               </div>
             </div>
           </div>
           <div class="form-sct acmd-form">
             <h5>Accommodation</h5>
-            <select name="acmd" id="acmd">
-              <option value="1">Choose transportation</option>
-              <option value="#"></option>
+            <select name="acmd" id="acmd" required>
+              <option selected>Choose transportation</option>
+              <option>Garuda Indonesia</option>
             </select>
           </div>
           <div class="form-sct date-form">
             <h5>Date</h5>
-            <input type="date">
+            <input type="date" id="date" name="date" oninput="validateFrom()" required>
           </div>
         </div>
         <div class="price">
@@ -105,33 +107,36 @@
             <span>Price :</span><h4>Rp 250.000,-</h4>
           </div>
         </div>
+        <div class="next-btn">
+          <button id="nextBtn" onclick="showForm(3)" disabled>Next</button>
+        </div>
       </div>
 
-      <div class="step3" id="stepThree">
+      <div class="step3 none" id="form3">
         <h3>3. Fill Your Personal Data</h3>
         <div class="form-box stp3-book">
           <div class="form-sct name-form">
             <h5>Full name*</h5>
             <div class="inpt-fname">
-              <input type="text" id="name" name="name" placeholder="Your name">
+              <input type="text" id="name" name="name" oninput="validateFrom()" placeholder="Your name" required>
             </div>
           </div>
           <div class="form-sct mail-form">
             <label for="email"><h5>Email*</h5></label>
-            <input type="email" id="email" name="email" placeholder="Your Email">
+            <input type="email" id="email" name="email" oninput="validateFrom()" placeholder="Your Email" required>
           </div>
           <div class="form-sct phone-form">
             <label for="phone"><h5>Phone*</h5></label>
-            <input type="text" id="phone" name="phone" placeholder="Your Phone Number">
+            <input type="text" id="phone" name="phone" oninput="validateFrom()" placeholder="Your Phone Number" required>
           </div>
   
-          <button>Checkout</button>
+          <button id="submitBtn" onclick="submitForm()" disabled>Checkout</button>
         </div>
       </div>
     </form>
   </section>
 
-  <section class="cp-sct" id="company-profile">
+  <section class="cp-sct" id="aboutUs">
     <div class="cp-header">
       <h2>About Us</h2>
       <p>We consider every trip as an unforgettable adventure. From city to city, and place to place, we are your passionate travel  partner. We are the answer to the question: "How do I get there?" We make it more than just transportation and create unforgettable stories.</p>
@@ -174,7 +179,7 @@
     </div>
   </section>
 
-  <section id="contactUs" class="cu-sct">
+  <section class="cu-sct" id="contactUs">
     <div class="cu-title">
       <h2>Contact Us</h2>
       <p>At Rovera, we're committed to providing you with the best service and support. If you have any questions, feedback, or need assistance, please don't hesitate to get in touch with us!</p>
@@ -182,7 +187,7 @@
 
     <div class="cu-info">
       <div class="peta">
-        <img src="./assets/map.png" alt="">
+        <img src="./assets/map.png" alt="company location">
       </div>
   
       <div class="cu-icon">
@@ -219,10 +224,10 @@
     <div class="footer-center">
       <h5 class="ftr-title">Explore</h5>
       <div class="ftr-details">
-        <p href="#">Home</p>
-        <p href="#">Book</p>
-        <p href="#">About Us</p>
-        <p href="#">Contact Us</p>
+        <a href="#hero">Home</a>
+        <a href="#book">Book</a>
+        <a href="#aboutUs">About Us</a>
+        <a href="#contactUs">Contact Us</a>
       </div>
     </div>
     
@@ -237,7 +242,7 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="./js/script.js"></script>
 
 </body>
 </html>

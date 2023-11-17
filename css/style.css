@@ -7,6 +7,10 @@
   font-family: 'Poppins', sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 h1 {
   font-size: 64px;
   line-height: 96px;
@@ -44,11 +48,7 @@ p {
   font-weight: 300;
 }
 
-/* body {
-  width: 0;
-} */
-
-/* ? Header Start */
+/* Header Start */
 .nav {
   display: flex;
   align-items: center;
@@ -56,8 +56,8 @@ p {
   padding: 20px 50px;
   background: #F7F3E3;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
-  z-index: 999;
-  position: sticky;
+  width: 100%;
+  position: fixed;
   top: 0;
   left: 0;
 }
@@ -66,7 +66,8 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 50px;
+  gap: 30px;
+  cursor: pointer;
 }
 
 .navigation li {
@@ -79,12 +80,8 @@ p {
   text-decoration: none;
   font-size: 24px;
   font-weight: 300;
-  color: #1a1a1a;
-  transition: 1s ease-in;
-  -webkit-transition: 0.3s ease;
-  -moz-transition: 0.3s ease;
-  -ms-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
+  color: #5A4C38;
+  transition: all ease-out 250ms;
 }
 
 .navigation li a:hover,
@@ -108,18 +105,18 @@ p {
   align-items: center;
 }
 
-#close {
+.close-nav {
   display: none;
 }
 
-
+/* Hero Section */
 .hero-sct {
   background-image: url("assets/hero.png");
-  height: 90vh;
+  height: 100vh;
   width: 100%;
   background-size: cover;
   background-position: top 25% right 0;
-  padding: 100px 100px 100px 100px;
+  padding: 150px 100px 150px 100px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -162,12 +159,20 @@ p {
   -o-border-radius: 20px;
 }
 
-/* Section book */
+.hero-sct a {
+  color: inherit;
+  text-decoration: none ;
+}
 
+/* Book Section */
 .book-sct {
   background-color: #212121;
   padding: 100px 100px 100px 100px;
   text-align: center;
+}
+
+.book-sct .none {
+  display: none;
 }
 
 .book-sct h2, p{
@@ -178,6 +183,57 @@ p {
   color: #E3E6F3;
   padding-top: 50px;
   text-align: start;
+}
+
+.step2 button,
+.step3 button {
+  background-color: #53917E;
+  border-radius: 50px;
+  color: #fff;
+  border: 0;
+  padding: 10px 100px 10px 100px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 24px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+
+.step2 button:hover,
+.step3 button:hover {
+  background-color: #2b473e;
+  border-radius: 50px;
+  color: #fff;
+  border: 0;
+  padding: 10px 100px 10px 100px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 24px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+
+.step2 button:disabled,
+.step3 button:disabled {
+  background-color: #9c9c9c;
+  border-radius: 50px;
+  color: #fff;
+  border: 0;
+  padding: 10px 100px 10px 100px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 24px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
 }
 
 .form-box {
@@ -197,11 +253,12 @@ p {
 
 .stp1-book {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
 .stp1-book .icon-transport {
-  margin: 0px 125px 0px 10px;
+  margin: 0px 100px 0px 100px;
 }
 
 .stp1-book .ic {
@@ -233,6 +290,12 @@ p {
 }
 
 .stp1-book button:hover {
+  background-color: #212121;
+  border: none;
+  border-radius: 50px;
+}
+
+.stp1-book .ctgActive {
   background-color: #212121;
   border: none;
   border-radius: 50px;
@@ -322,7 +385,6 @@ p {
   border-width: 3px;
   width: 450px;
   padding: 10px 10px 10px 20px;
-  
   font-size: 24px;
   color: #5A4C38;
 }
@@ -349,6 +411,11 @@ p {
   font-weight: 400;
 }
 
+.step2 .next-btn {
+  display: block;
+  padding-top: 50px;
+}
+
 .stp3-book .form-sct {
   padding-bottom: 50px;
 }
@@ -371,25 +438,9 @@ p {
   padding-right: 143px;
 }
 
-.stp3-book button {
-  background-color: #53917E;
-  border-radius: 50px;
-  color: #fff;
-  border: 0;
-  padding: 10px 100px 10px 100px;
-  background-repeat: no-repeat;
-  cursor: pointer;
-  font-weight: 500;
-  font-size: 24px;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
-  -ms-border-radius: 50px;
-  -o-border-radius: 50px;
-}
-
 /* Section Company */
 .cp-sct {
-  padding: 100px 100px 100px 100px;
+  padding: 150px 100px 150px 100px;
   background-color: #F7F3E3;
 }
 
@@ -419,7 +470,6 @@ p {
   display: flex;
   align-items: center;
   width: 100%;
-  position: relative;
   padding-bottom: 50px;
 }
 
@@ -453,10 +503,7 @@ p {
 /* Section Contact Us */
 .cu-sct {
 	background-color: #5A4C38;
-	padding-top: 100px;
-	padding: 100px;
-	padding-left: 100px;
-	padding-right: 100px;
+	padding: 150px 100px 150px 100px;
 }
 
 .cu-title {
@@ -474,7 +521,6 @@ p {
 }
 
 .cu-info {
-	position: relative;
 	display: flex;
 	gap: 200px;
 	justify-content: center;
@@ -506,7 +552,7 @@ p {
 /* Section Footer */
 footer {
   background-color: #212121;
-  padding: 100px 100px 100px 100px;
+  padding: 150px 100px 150px 100px;
 }
 
 .footer-left, .footer-center, .footer-right {
@@ -533,11 +579,19 @@ footer {
   padding-bottom: 20px;
 }
 
-.ftr-details p {
+.ftr-details a {
+  display: flex;
+  color: #F7F3E3;
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 300;
+  text-decoration: none;
   padding-bottom: 10px;
 }
 
-
+.ftr-details p {
+  padding-bottom: 10px;
+}
 
 @media (max-width:800px) {
 
@@ -553,6 +607,7 @@ footer {
     background-color: #F7F3E3;
     box-shadow: 0 40px 60px rgba(0, 0, 0, 0.01);
     padding: 80px 0 0 10px;
+    border-radius: 30px;
     transition: 0.3s;
     -webkit-transition: 0.3s;
     -moz-transition: 0.3s;
@@ -560,7 +615,7 @@ footer {
     -o-transition: 0.3s;
   }
 
-  .navigation.active {
+  .active {
     right: 0px;
   }
 
@@ -580,7 +635,7 @@ footer {
     padding: 20px;
   }
 
-  #close {
+  #closeNav {
     display: initial;
     position: absolute;
     top: 30px;
@@ -636,9 +691,8 @@ footer {
   /* Book Section */
 
   .book-sct {
-    padding-left: 50px;
-    padding-right: 50px;
-  }
+    padding: 100px 50px 100px 50px;
+}
 
   .form-sct label {
     color: #F7F3E3;
@@ -717,6 +771,9 @@ footer {
   } 
 
   /* Section Company */
+  .cp-sct {
+    padding: 100px 50px 100px 50px;
+  }
 
   .cp-header {
     margin-top: 0;
@@ -744,7 +801,6 @@ footer {
   }
 
   /* Contact Us */
-
   .cu-title {
     margin-top: 0;
     margin-bottom: 20px;
@@ -759,6 +815,11 @@ footer {
     gap: 100px;
   }
 
+  .cu-icon {
+    display: flex;
+    flex-direction: column;
+  }
+
   .cu-sct .ic {
     display: flex;
     align-items: center;
@@ -768,16 +829,22 @@ footer {
   .cu-sct .cu-details{
     display: block;
     padding-left: 0;
-    text-align: center;
+    text-align: left;
+    font-size: 24px;
+	  font-weight: 300;
+    line-height: 36px;
   }
 
   /* Footer */
-
   .footer-left, .footer-center, .footer-right {
 		flex-wrap: wrap;
     width: 100%;
     margin-bottom: 30px;
 		text-align: center;
 	}
-  
+
+  .footer-center a {
+    display: flex;
+    flex-direction: column;
+  }
 }
