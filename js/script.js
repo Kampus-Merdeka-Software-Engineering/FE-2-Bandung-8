@@ -63,12 +63,54 @@ function selectCategory(category) {
 
   // Show Form step 2
   showForm(2);
+
+  // Enable or disable Next button based on form validation
+  validateform();
 }
 
 function showForm(formNumber) {
   // Show the selected form
   document.getElementById(`form${formNumber}`).style.display = 'block';
+
+  // Enable or disable Next button based on form validation
+  validateform();
 }
+
+// Button Statement on Book Section
+function validateForm() {
+  const form2Fields = document.getElementById('form2').querySelectorAll('input');
+  const form3Fields = document.getElementById('form3').querySelectorAll('input');
+
+  const nextButton = document.querySelector('#form2 button');
+  const submitButton = document.querySelector('#form3 button');
+
+  // Check if all form fields are filled
+  const form2Complete = Array.from(form2Fields).every(field => field.value.trim() !== '');
+  const form3Complete = Array.from(form3Fields).every(field => field.value.trim() !== '');
+
+  // Enable or disabled Next Button on form step 2
+  if (form2Complete) {
+    nextButton.removeAttribute('disabled');
+  } else {
+    nextButton.setAttribute('disabled', 'true');
+  }
+
+  // Enable or disabled Submit Button on form step 3
+  if (form3Complete) {
+    submitButton.removeAttribute('disabled');
+  } else {
+    submitButton.setAttribute('disabled', 'true');
+  }
+}
+
+// Add event listeners to form fields for real-time validation
+document.querySelectorAll('#form2 input' && '#form3 input').forEach(input => {
+  input.addEventListener('input', validateForm);
+});
+
+// document.querySelectorAll('#form3 input').forEach(input => {
+//   input.addEventListener('input', validateForm);
+// });
 
 // function submitForm() {
 //   Process and submit form data
@@ -82,5 +124,3 @@ function resetForm() {
       field.value = '';
   });
 }
-
-// Button Statement on Book Section

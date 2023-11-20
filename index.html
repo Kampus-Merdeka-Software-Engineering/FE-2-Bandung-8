@@ -82,11 +82,11 @@
             <div class="container">
               <div class="inpt-from">
                 <label for="from-dst">from</label>
-                <input type="text" id="from-dst" name="from-dst" oninput="validateFrom()" required>
+                <input type="text" id="from-dst" name="from-dst" oninput="validateForm()" required>
               </div>
               <div class="inpt-to">
                 <label for="to-dst">to</label>
-                <input type="text" id="to-dst" name="to-dst" oninput="validateFrom()" required>
+                <input type="text" id="to-dst" name="to-dst" oninput="validateForm()" required>
               </div>
             </div>
           </div>
@@ -99,7 +99,7 @@
           </div>
           <div class="form-sct date-form">
             <h5>Date</h5>
-            <input type="date" id="date" name="date" oninput="validateFrom()" required>
+            <input type="date" id="date" name="date" oninput="validateForm()" required>
           </div>
         </div>
         <div class="price">
@@ -118,16 +118,16 @@
           <div class="form-sct name-form">
             <h5>Full name*</h5>
             <div class="inpt-fname">
-              <input type="text" id="name" name="name" oninput="validateFrom()" placeholder="Your name" required>
+              <input type="text" id="name" name="name" oninput="validateForm()" placeholder="Your name" required>
             </div>
           </div>
           <div class="form-sct mail-form">
             <label for="email"><h5>Email*</h5></label>
-            <input type="email" id="email" name="email" oninput="validateFrom()" placeholder="Your Email" required>
+            <input type="email" id="email" name="email" oninput="validateForm()" placeholder="Your Email" required>
           </div>
           <div class="form-sct phone-form">
             <label for="phone"><h5>Phone*</h5></label>
-            <input type="text" id="phone" name="phone" oninput="validateFrom()" placeholder="Your Phone Number" required>
+            <input type="text" id="phone" name="phone" oninput="validateForm()" placeholder="Your Phone Number" required>
           </div>
   
           <button id="submitBtn" onclick="submitForm()" disabled>Checkout</button>

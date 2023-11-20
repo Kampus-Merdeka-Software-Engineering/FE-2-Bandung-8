@@ -111,7 +111,7 @@ p {
 
 /* Hero Section */
 .hero-sct {
-  background-image: url("assets/hero.png");
+  background-image: url("../assets/hero.png");
   height: 100vh;
   width: 100%;
   background-size: cover;
