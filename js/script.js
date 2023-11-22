@@ -104,7 +104,7 @@ function validateForm() {
 }
 
 // Add event listeners to form fields for real-time validation
-document.querySelectorAll('#form2 input' && '#form3 input').forEach(input => {
+document.querySelectorAll('input').forEach(input => {
   input.addEventListener('input', validateForm);
 });
 
