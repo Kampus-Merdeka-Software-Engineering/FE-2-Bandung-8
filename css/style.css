@@ -44,7 +44,6 @@ h5 {
 p {
   font-size: 20px;
   line-height: 30px;
-  color: #465b52;
   font-weight: 300;
 }
 
@@ -60,6 +59,7 @@ p {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 3;
 }
 
 .navigation {
@@ -283,6 +283,10 @@ p {
   margin-bottom: 5px;
 }
 
+.stp1-book p {
+  color: #F7F3E3;
+}
+
 .stp1-book button {
   background-color: transparent;
   border: none;
@@ -359,7 +363,13 @@ p {
   margin-right: 40px;
 }
 
-.acmd-form select {
+.acmd-form .select-container {
+  display: flex;
+  position: relative;
+}
+
+.acmd-form .select-box {
+  appearance: none;
   box-sizing: border-box;
   background-color: #F7F3E3;
   border-radius: 30px;
@@ -370,6 +380,32 @@ p {
   color: #5A4C38;
   font-size: 24px;
   padding: 10px 20px 10px 20px;
+}
+
+.select-box::part(listbox) {
+  padding: 5px;
+  margin: 5px 0 0 2px;
+}
+
+option {
+  padding: .5em;
+}
+
+.select-container .select-ic {
+  width: 50px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  border-radius: 0 30px 30px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: none;
+}
+
+.select-ic i {
+  font-size: 50px;
+  color: #5A4C38;
 }
 
 .date-form h5 {
@@ -427,7 +463,7 @@ p {
 }
 
 .name-form h5 {
-  padding-right: 130px;
+  padding-right: 105px;
 }
 
 .mail-form h5 {
@@ -436,6 +472,139 @@ p {
 
 .phone-form h5 {
   padding-right: 143px;
+}
+
+/* Pop-up Modal / Checkout Summary */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+
+.modal-background {
+  background-color: rgba(33, 33, 33, .5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.modal {
+  background-color: #F7F3E3;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  padding: 50px 10px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.close-modal {
+  display: flex;
+  position: absolute;
+  align-items: end;
+  justify-content: flex-end;
+  width: 100%;
+  top: 0;
+  padding: 10px 20px;
+  color: #E3E6F3;
+  background-color: #5A4C38;
+  border-radius: 30px 30px 0 0;
+}
+
+.close-modal:hover {
+  color: #E3E6F3;
+  background-color: #cb2222;
+}
+
+.modal-inner {
+  width: 100%;
+  padding: 0 20px;
+}
+
+.modal-title {
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.modal-title h4, p {
+  color: #212121;
+}
+
+.summary-table {
+  width: 100%;
+  padding-bottom: 50px;
+}
+
+.summary-table tr {
+  height: 20px;
+  font-size: 20px;
+}
+
+.summary-table td {
+  font-size: 16pt;
+  font-weight: 300;
+}
+
+.confirm-btn {
+  background-color: #53917E;
+  border-radius: 20px;
+  color: #fff;
+  border: 0;
+  padding: 10px 50px 10px 50px;
+  width: 200px;
+  margin: 0 10px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 24px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.confirm-btn:hover {
+  background-color: #6cb8a0;
+}
+
+.back-btn {
+  border: #915353;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 20px;
+  background-color: transparent;
+  color: #915353;
+  padding: 6px 50px 6px 50px;
+  width: 200px;
+  margin: 0 10px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 24px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.back-btn:hover {
+  background-color: rgb(255, 208, 208);
 }
 
 /* Section Company */
@@ -757,18 +926,35 @@ footer {
     color: #5A4C38;
     font-size: 24px;
     padding: 5px 5px 5px 20px;
-    margin-bottom: 10px;
   }
 
   .stp2-book .date-form,
   .stp2-book .date-form h5 {
     display: block;
     text-align: left;
+    margin-top: 10px;
   }
 
   .stp2-book .date-form h5 {
     padding-bottom: 10px;
   } 
+
+  .select-container .select-ic {
+    width: 50px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    border-radius: 0 30px 30px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: none;
+  }
+  
+  .select-ic i {
+    font-size: 50px;
+    color: #5A4C38;
+  }
 
   /* Section Company */
   .cp-sct {

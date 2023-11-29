@@ -49,6 +49,12 @@ function navHighlighter() {
 // Progresive Book form section
 let selectedCategory = 0;
 const categories = document.querySelectorAll('.category');
+const categoryNames = {
+  1: 'Airplane',
+  2: 'Train',
+  3: 'Bus',
+  4: 'Ship'
+};
 
 function selectCategory(category) {
 
@@ -65,7 +71,7 @@ function selectCategory(category) {
   showForm(2);
 
   // Enable or disable Next button based on form validation
-  validateform();
+  validateForm();
 }
 
 function showForm(formNumber) {
@@ -73,7 +79,7 @@ function showForm(formNumber) {
   document.getElementById(`form${formNumber}`).style.display = 'block';
 
   // Enable or disable Next button based on form validation
-  validateform();
+  validateForm();
 }
 
 // Button Statement on Book Section
@@ -108,14 +114,75 @@ document.querySelectorAll('input').forEach(input => {
   input.addEventListener('input', validateForm);
 });
 
-// document.querySelectorAll('#form3 input').forEach(input => {
-//   input.addEventListener('input', validateForm);
-// });
+// Checkout Popup Modal for Confirmation
+function submitForm(event) {
+  event.preventDefault();
 
-// function submitForm() {
-//   Process and submit form data
-//   alert('Form submitted!')
-// }
+  // Process and submit form data
+  const summaryContent = buildSummary();
+  document.getElementById('summaryContent').innerHTML = summaryContent;
+  openModal('summaryModal');
+}
+
+function buildSummary() {
+  const form2 = document.getElementById('form2');
+  const form3 = document.getElementById('form3');
+
+  const form2Fields = form2.querySelectorAll('input');
+  const form3Fields = form3.querySelectorAll('input');
+
+  const summaryTable = document.createElement('table');
+  summaryTable.className = 'summary-table';
+
+  const addRow = (label, value) => {
+    const row = summaryTable.insertRow();
+    const cell1 = row.insertCell(0);
+    const cell2 = row.insertCell(1);
+    cell1.innerHTML = label;
+    cell2.innerHTML = value;
+  };
+
+  // Selected category in summary
+  addRow('Category', categoryNames[selectedCategory]);
+
+  // Form 2
+  form2Fields.forEach(field => {
+    const label = document.querySelector(`label[for="${field.id}"]`).innerText;
+    addRow(label, field.value);
+  });
+
+  // Form 3
+  form3Fields.forEach(field => {
+    const label = document.querySelector(`label[for="${field.id}"]`).innerText;
+    addRow(label, field.value);
+  });
+
+  return summaryTable.outerHTML;
+}
+
+// Open Pop-up modal
+function openModal(modalId) {
+  const modal = document.getElementById(modalId);
+  modal.style.display = 'flex';
+}
+
+function closeModal() {
+  const modal = document.getElementById('summaryModal');
+  modal.style.display = 'none';
+}
+
+function goBack() {
+  closeModal();
+}
+
+function confirmForm() {
+  // Perform actions when the user confirms the form
+  alert('Form confirmed!');
+
+  // Refresh page after confirm
+  window.location.reload();
+  closeModal();
+}
 
 function resetForm() {
   // Reset form fields when changing Category

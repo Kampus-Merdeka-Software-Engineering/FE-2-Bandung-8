@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="assets/logo.png">
   <title>Travel Website</title>
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"/>
   <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
@@ -45,7 +46,6 @@
       <div class="step1" id="stepOne">
         <h3>1. Choose transportation</h3>
         <div class="form-box stp1-book" id="transport">
-
           <div class="category icon-transport" onclick="selectCategory(1)">
             <button id="airline">
               <img src="assets/feature/airline.png" class="ic fe-box" alt="airline">
@@ -70,7 +70,6 @@
               <p>Ship</p>
             </button>
           </div>
-
         </div>
       </div>
 
@@ -78,7 +77,7 @@
         <h3>2. Choose Destination, Accommodation & Date</h3>
         <div class="form-box stp2-book" id="formTwo">
           <div class="form-sct dst-form">
-            <h5>Destination</h5>
+            <label for="destination"><h5>Destination</h5></label>
             <div class="container">
               <div class="inpt-from">
                 <label for="from-dst">from</label>
@@ -91,14 +90,19 @@
             </div>
           </div>
           <div class="form-sct acmd-form">
-            <h5>Accommodation</h5>
-            <select name="acmd" id="acmd" required>
-              <option selected>Choose transportation</option>
-              <option>Garuda Indonesia</option>
-            </select>
+            <label for="accommodation"><h5>Accommodation</h5></label>
+            <div class="select-container">
+              <select name="acmd" class="select-box" id="acmd" required>
+                <option value="">Choose transportation</option>
+                <option value="1">Garuda Indonesia</option>
+              </select>
+              <div class="select-ic">
+                <i class="material-symbols-outlined">expand_more</i>
+              </div>
+            </div>
           </div>
           <div class="form-sct date-form">
-            <h5>Date</h5>
+            <label for="date"><h5>Date</h5></label>
             <input type="date" id="date" name="date" oninput="validateForm()" required>
           </div>
         </div>
@@ -116,25 +120,42 @@
         <h3>3. Fill Your Personal Data</h3>
         <div class="form-box stp3-book">
           <div class="form-sct name-form">
-            <h5>Full name*</h5>
-            <div class="inpt-fname">
-              <input type="text" id="name" name="name" oninput="validateForm()" placeholder="Your name" required>
-            </div>
+            <label for="name"><h5>Full name</h5></label>
+            <input type="text" id="name" name="name" oninput="validateForm()" placeholder="Your name" required>
           </div>
           <div class="form-sct mail-form">
-            <label for="email"><h5>Email*</h5></label>
+            <label for="email"><h5>Email</h5></label>
             <input type="email" id="email" name="email" oninput="validateForm()" placeholder="Your Email" required>
           </div>
           <div class="form-sct phone-form">
-            <label for="phone"><h5>Phone*</h5></label>
+            <label for="phone"><h5>Phone</h5></label>
             <input type="text" id="phone" name="phone" oninput="validateForm()" placeholder="Your Phone Number" required>
           </div>
   
-          <button id="submitBtn" onclick="submitForm()" disabled>Checkout</button>
+          <button id="submitBtn" onclick="submitForm(event)" disabled>Checkout</button>
         </div>
       </div>
     </form>
   </section>
+  
+  <!-- Pop-up Modal / Checkout Summary -->
+  <div class="popup" id="summaryModal">
+    <div class="modal-background"></div>
+      <div class="modal">
+        <span class="material-symbols-outlined close-modal" onclick="closeModal()">close</span>
+        <div class="modal-inner">
+          <div class="modal-title">
+            <h4>Checkout Summary</h4>
+            <p>Confirm your order</p>
+          </div>
+          <div class="order-summary" id="summaryContent"></div>
+        </div>
+        <div class="modal-btn">
+          <button class="back-btn" onclick="goBack()">Back</button>
+          <button class="confirm-btn" onclick="confirmForm()">Confirm</button>
+        </div>
+      </div>
+  </div>
 
   <section class="cp-sct" id="aboutUs">
     <div class="cp-header">
