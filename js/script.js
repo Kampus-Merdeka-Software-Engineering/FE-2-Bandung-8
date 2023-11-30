@@ -50,7 +50,7 @@ function navHighlighter() {
 let selectedCategory = 0;
 const categories = document.querySelectorAll('.category');
 const categoryNames = {
-  1: 'Airplane',
+  1: 'Flight',
   2: 'Train',
   3: 'Bus',
   4: 'Ship'
