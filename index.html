@@ -42,7 +42,7 @@
     <h2>Where would you like to go?</h2>
     <p>Tell us your destination and we'll help you get there!</p>
     
-    <form name="book-form">
+    <form name="bookForm" class="book-form">
       <div class="step1" id="stepOne">
         <h3>1. Choose transportation</h3>
         <div class="form-box stp1-book" id="transport">
@@ -80,21 +80,22 @@
             <label for="destination"><h5>Destination</h5></label>
             <div class="container">
               <div class="inpt-from">
-                <label for="from-dst">from</label>
+                <label for="from-dst">From</label>
                 <input type="text" id="from-dst" name="from-dst" oninput="validateForm()" required>
               </div>
               <div class="inpt-to">
-                <label for="to-dst">to</label>
+                <label for="to-dst">To</label>
                 <input type="text" id="to-dst" name="to-dst" oninput="validateForm()" required>
               </div>
             </div>
           </div>
           <div class="form-sct acmd-form">
-            <label for="accommodation"><h5>Accommodation</h5></label>
+            <label for="acmd"><h5>Accommodation</h5></label> 
             <div class="select-container">
-              <select name="acmd" class="select-box" id="acmd" required>
-                <option value="">Choose transportation</option>
+              <select name="acmd" class="select-box" id="acmd" placeholder="Choose transportation" required>
+                <option value="" disabled selected>Choose transportation</option>
                 <option value="1">Garuda Indonesia</option>
+                <option value="2">Lion Air</option>
               </select>
               <div class="select-ic">
                 <i class="material-symbols-outlined">expand_more</i>
@@ -102,7 +103,7 @@
             </div>
           </div>
           <div class="form-sct date-form">
-            <label for="date"><h5>Date</h5></label>
+            <label for="date" id="date"><h5>Date</h5></label>
             <input type="date" id="date" name="date" oninput="validateForm()" required>
           </div>
         </div>

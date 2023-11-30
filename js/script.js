@@ -128,7 +128,7 @@ function buildSummary() {
   const form2 = document.getElementById('form2');
   const form3 = document.getElementById('form3');
 
-  const form2Fields = form2.querySelectorAll('input');
+  const form2Fields = form2.querySelectorAll('input, select');
   const form3Fields = form3.querySelectorAll('input');
 
   const summaryTable = document.createElement('table');
@@ -138,8 +138,10 @@ function buildSummary() {
     const row = summaryTable.insertRow();
     const cell1 = row.insertCell(0);
     const cell2 = row.insertCell(1);
-    cell1.innerHTML = label;
-    cell2.innerHTML = value;
+    const cell3 = row.insertCell(2);
+    cell1.innerHTML = `<strong>${label}</strong>`;
+    cell2.innerHTML = ":";
+    cell3.innerHTML = value;
   };
 
   // Selected category in summary
@@ -147,9 +149,24 @@ function buildSummary() {
 
   // Form 2
   form2Fields.forEach(field => {
-    const label = document.querySelector(`label[for="${field.id}"]`).innerText;
-    addRow(label, field.value);
+    const labelElement = document.querySelector(`label[for="${field.id}"]`);
+    if (labelElement) {
+        const label = labelElement.innerText;
+        let value = '';
+        
+        if (field.tagName === 'SELECT') {
+            // Jika elemen adalah select, ambil nilai dari option yang dipilih
+            const selectedOption = field.options[field.selectedIndex];
+            value = selectedOption ? selectedOption.text : ''; // Teks dari option yang dipilih
+        } else {
+            // Jika elemen adalah input, ambil nilai langsung
+            value = field.value;
+        }
+        
+        addRow(label, value);
+    }
   });
+
 
   // Form 3
   form3Fields.forEach(field => {

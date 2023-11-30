@@ -175,7 +175,8 @@ p {
   display: none;
 }
 
-.book-sct h2, p{
+.book-sct h2, 
+.book-sct p{
   color: #E3E6F3;
 }
 
@@ -247,7 +248,8 @@ p {
   -o-border-radius: 30px;
 }
 
-.form-box h5, p {
+.form-box h5,
+.form-box p {
   color: #F7F3E3;
 }
 
@@ -342,7 +344,9 @@ p {
 }
 
 .dst-form {
-  padding-bottom: 50px;
+  padding-bottom: 20px;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 
 .dst-form h5 {
@@ -351,15 +355,24 @@ p {
 
 .dst-form .container {
   display: flex;
-  justify-content: center;
-  gap: 150px;
+  justify-content: start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.dst-form .container .inpt-from,
+.dst-form .container .inpt-to {
+  padding: 0 100px 30px 0;
+  text-align: left;
 }
 
 .acmd-form {
   padding-bottom: 50px;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 
-.acmd-form h5 {
+.acmd-form label {
   margin-right: 40px;
 }
 
@@ -376,10 +389,10 @@ p {
   border-style: solid ;
   border-color: #F7F3E3;
   border-width: 3px;
-  width: 565px;
+  width: 100%;
   color: #5A4C38;
   font-size: 24px;
-  padding: 10px 20px 10px 20px;
+  padding: 10px 100px 10px 20px;
 }
 
 .select-box::part(listbox) {
@@ -408,6 +421,11 @@ option {
   color: #5A4C38;
 }
 
+.date-form {
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
 .date-form h5 {
   margin-right: 189px;
 }
@@ -419,7 +437,6 @@ option {
   border-style: solid ;
   border-color: #F7F3E3;
   border-width: 3px;
-  width: 450px;
   padding: 10px 10px 10px 20px;
   font-size: 24px;
   color: #5A4C38;
@@ -456,22 +473,32 @@ option {
   padding-bottom: 50px;
 }
 
+.stp3-book label,
+.stp3-book input {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
 .name-form .container {
   display: flex;
   justify-content: center;
   gap: 150px;
 }
 
-.name-form h5 {
+.name-form label {
   padding-right: 105px;
+  text-align: left;
 }
 
-.mail-form h5 {
+.mail-form label {
   padding-right: 155px;
+  text-align: left;
 }
 
-.phone-form h5 {
+.phone-form label {
   padding-right: 143px;
+  text-align: left;
 }
 
 /* Pop-up Modal / Checkout Summary */
@@ -506,7 +533,7 @@ option {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 500px;
+  width: 550px;
   padding: 50px 10px;
   border-radius: 30px;
   display: flex;
@@ -528,8 +555,8 @@ option {
 }
 
 .close-modal:hover {
-  color: #E3E6F3;
-  background-color: #cb2222;
+  color: #212121;
+  cursor: pointer;
 }
 
 .modal-inner {
@@ -685,6 +712,7 @@ option {
 }
 
 .cu-title p {
+	color: #F7F3E3;
 	text-align: left;
 	padding-bottom: 50px;
 }
@@ -740,6 +768,10 @@ footer {
   padding-bottom: 20px;
 }
 
+.footer-left p {
+  color: #E3E6F3;
+}
+
 .footer-center {
   margin-right: 200px;
 }
@@ -750,7 +782,7 @@ footer {
 
 .ftr-details a {
   display: flex;
-  color: #F7F3E3;
+  color: #E3E6F3;
   font-size: 20px;
   line-height: 30px;
   font-weight: 300;
@@ -759,6 +791,7 @@ footer {
 }
 
 .ftr-details p {
+  color: #E3E6F3;
   padding-bottom: 10px;
 }
 
@@ -861,13 +894,20 @@ footer {
 
   .book-sct {
     padding: 100px 50px 100px 50px;
-}
+  }
+
+  .form-box {
+    padding: 50px 50px;
+  }
 
   .form-sct label {
     color: #F7F3E3;
     font-size: 16pt;
     font-weight: 300;
+    display: inline-block;
+    height: fit-content;
     padding-right: 25px;
+    padding-bottom: 10px;
   }
 
   .form-sct input {
@@ -877,8 +917,7 @@ footer {
     border-style: solid ;
     border-color: #F7F3E3;
     border-width: 3px;
-    width: 250px;
-    padding: 5px 20px 5px 20px;
+    padding: 10px 20px 10px 20px;
     font-size: 16pt;
     color: #F7F3E3;
   }
@@ -906,6 +945,18 @@ footer {
     display: flex;
     gap: 20px;
   }
+
+  .dst-form .container .inpt-from,
+  .dst-form .container .inpt-to {
+    display: flex;
+    padding: 0;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .dst-form .container input {
+    width: 100%;
+  }
   
   .stp2-book .acmd-form,
   .stp2-book .acmd-form h5 {
@@ -922,23 +973,16 @@ footer {
     border-style: solid ;
     border-color: #F7F3E3;
     border-width: 3px;
-    width: 520px;
+    width: 100%;
     color: #5A4C38;
     font-size: 24px;
     padding: 5px 5px 5px 20px;
   }
 
-  .stp2-book .date-form,
-  .stp2-book .date-form h5 {
-    display: block;
-    text-align: left;
-    margin-top: 10px;
+  .acmd-form .select-container {
+    width: 100%;
   }
-
-  .stp2-book .date-form h5 {
-    padding-bottom: 10px;
-  } 
-
+  
   .select-container .select-ic {
     width: 50px;
     height: 100%;
@@ -954,6 +998,60 @@ footer {
   .select-ic i {
     font-size: 50px;
     color: #5A4C38;
+  }
+
+  .stp2-book .date-form,
+  .stp2-book .date-form h5 {
+    display: flex;
+    text-align: left;
+    margin-top: 10px;
+  }
+
+  .stp2-book .date-form h5 {
+    padding-bottom: 10px;
+  }
+
+  .date-form input {
+    width: 100%;
+  }
+
+  .stp3-book label,
+  .stp3-book input {
+    width: 100%;
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .name-form {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .name-form label {
+    padding-right: 0;
+    text-align: left;
+  }
+
+  .mail-form {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .mail-form label {
+    padding-right: 0;
+    text-align: left;
+  }
+
+  .phone-form {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .phone-form label {
+    padding-right: 0;
+    text-align: left;
   }
 
   /* Section Company */
