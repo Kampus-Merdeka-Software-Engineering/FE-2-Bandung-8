@@ -634,6 +634,41 @@ option {
   background-color: rgb(255, 208, 208);
 }
 
+/* After Checkout Animation */
+.loading-container {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #6cb8a0;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#successIcon,
+#loadingIcon {
+    display: none;
+    text-align: center;
+}
+
+.success-icon {
+  color: #6cb8a0;
+  font-size: 128pt;
+  line-height: 10px;
+  padding-bottom: 50px;
+}
+
 /* Section Company */
 .cp-sct {
   padding: 150px 100px 150px 100px;

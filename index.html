@@ -151,9 +151,18 @@
           </div>
           <div class="order-summary" id="summaryContent"></div>
         </div>
+        <!-- Loading animation -->
+        <div class="loading-container" id="loadingContainer">
+          <div class="loader"></div>
+      </div>
+      <div class="success-icon" id="successIcon">
+        <span class="material-symbols-outlined">task_alt</span>
+          <p>Checkout success!</p>
+      </div>
+
         <div class="modal-btn">
-          <button class="back-btn" onclick="goBack()">Back</button>
-          <button class="confirm-btn" onclick="confirmForm()">Confirm</button>
+          <button id="backButton" class="back-btn" onclick="goBack()">Back</button>
+          <button id="confirmButton" class="confirm-btn" onclick="confirmForm()">Confirm</button>
         </div>
       </div>
   </div>
