@@ -48,24 +48,21 @@ function navHighlighter() {
 }
 
 // Progresive Book form section
-let selectedCategory = 0;
-const categories = document.querySelectorAll(".category");
-const categoryNames = {
-	1: "Flight",
-	2: "Train",
-	3: "Bus",
-	4: "Ship",
-};
-
-function selectCategory(category) {
+function selectCategory(categoryId) {
 	// Reset the form fields when switching categories
 	resetForm();
 
-	selectedCategory = category;
-
 	// Highlight selected category
+	selectedCategory = parseInt(categoryId);
+
+	const categories = document.querySelectorAll(".category");
 	categories.forEach((transport) => transport.classList.remove("ctgActive"));
-	categories[category - 1].classList.add("ctgActive");
+	const categoryValue = document.querySelector(
+		`[data-value="${categoryId}"]`
+	);
+	if (categoryValue) {
+		categoryValue.classList.add("ctgActive");
+	}
 
 	// Show Form step 2
 	showForm(2);
@@ -208,11 +205,11 @@ function confirmForm() {
 	const backButton = document.getElementById("backButton");
 	const confirmButton = document.getElementById("confirmButton");
 
-  backButton.style.display = 'none';
-  confirmButton.style.display = 'none';
+	backButton.style.display = "none";
+	confirmButton.style.display = "none";
 
-  summaryContent.style.display = 'none';
-  loadingContainer.style.display = 'flex';
+	summaryContent.style.display = "none";
+	loadingContainer.style.display = "flex";
 
 	setTimeout(() => {
 		loadingContainer.style.display = "none";
@@ -222,7 +219,7 @@ function confirmForm() {
 		confirmButton.style.display = "inline-block";
 
 		setTimeout(() => {
-      window.location.reload();
+			window.location.reload();
 			closeModal();
 
 			summaryContent.style.display = "block";
@@ -238,3 +235,61 @@ function resetForm() {
 		field.value = "";
 	});
 }
+
+// Integrate Front End with Back End API
+const API_URL = "http://localhost:3000";
+
+document.addEventListener("DOMContentLoaded", () => {
+	fetchTransportation();
+});
+
+// Transportation API
+const fetchTransportation = async () => {
+	try {
+		const response = await fetch(`${API_URL}/transport`);
+		const transports = await response.json();
+		console.log(transports);
+		setupTransportation(transports);
+	} catch (error) {
+		console.error("Error:", error);
+	}
+};
+
+const setupTransportation = async (transports) => {
+	try {
+		const section = document.getElementById("transport");
+		transports.forEach((data) => {
+			const div = document.createElement("div");
+			div.classList.add("category", "icon-transport");
+			div.setAttribute("data-value", data.id);
+			div.setAttribute("onclick", `selectCategory(${data.id})`);
+
+			const button = document.createElement("button");
+			button.setAttribute("id", data.type);
+
+			const img = document.createElement("img");
+			img.setAttribute("src", `${data.iconUrl}`);
+			img.classList.add("ic", "fe-box");
+			img.setAttribute("alt", data.type);
+
+			const p = document.createElement("p");
+			p.innerHTML = `
+			<p>${data.type}</p>
+			`;
+
+			button.appendChild(img);
+			button.appendChild(p);
+			div.appendChild(button);
+			section.appendChild(div);
+		});
+
+		// Get Accommodation Data by Transportation type
+		document
+			.getElementById("transport")
+			.addEventListener("click", async (event) => {
+				console.log(event.currentTarget);
+			});
+	} catch (error) {
+		console.error("Error:", error);
+	}
+};
