@@ -57,13 +57,9 @@ async function selectCategory(transportationId) {
 
 	const categories = document.querySelectorAll(".category");
 	categories.forEach((transport) => transport.classList.remove("ctgActive"));
-	const categoryValue = document.querySelector(
-		`[data-value="${transportationId}"]`
-	);
-	if (categoryValue) {
-		categoryValue.classList.add("ctgActive");
-	}
-
+	document
+		.querySelector(`[data-value="${transportationId}"]`)
+		.classList.add("ctgActive");
 	// Show Form step 2
 	showForm(2);
 
@@ -291,11 +287,15 @@ const setupTransportation = async (transports) => {
 
 const loadAccommodation = async (transportationId) => {
 	try {
-		const response = await fetch(`${API_URL}/accommodation`);
+		const response = await fetch(
+			`${API_URL}/accommodation/${transportationId}`
+		);
 		const accommodations = await response.json();
 		console.log(accommodations);
 
 		const selector = document.getElementById("acmd");
+		selector.innerHTML = `<option value="" disabled selected>Choose accommodation</option>`;
+
 		accommodations.forEach((acmd) => {
 			const option = document.createElement("option");
 			option.value = acmd.id;
@@ -306,3 +306,32 @@ const loadAccommodation = async (transportationId) => {
 		console.error(error);
 	}
 };
+
+// const transportSelect = document.getElementById("transport");
+// transportSelect.addEventListener("change", (event) => {
+// 	const transportationId = event.currentTarget;
+// 	loadAccommodation(transportationId);
+// });
+
+const accommodationPrice = async (transportationId) => {
+	const acmdSelect = document.getElementById("acmd");
+	const accommodationId = acmdSelect.value;
+
+	if (accommodationId) {
+		await fetch(
+			`${API_URL}/accommodation/${transportationId}/${accommodationId}`
+		)
+			.then((response) => response.json())
+			.then((accommodation) => {
+				const acmdPrice = document.getElementById("acmdPrice");
+				if (acmdPrice) {
+					acmdPrice.textContent = `Rp ${accommodation.price},-`;
+				} else {
+					acmdPrice.textContent = `Rp 0,-`;
+				}
+			});
+	}
+};
+
+const acmdSelect = document.getElementById("acmd");
+acmdSelect.addEventListener("change", accommodationPrice);
