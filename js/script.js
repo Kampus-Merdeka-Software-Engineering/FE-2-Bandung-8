@@ -48,17 +48,17 @@ function navHighlighter() {
 }
 
 // Progresive Book form section
-function selectCategory(categoryId) {
+async function selectCategory(transportationId) {
 	// Reset the form fields when switching categories
 	resetForm();
 
 	// Highlight selected category
-	selectedCategory = parseInt(categoryId);
+	selectedCategory = parseInt(transportationId);
 
 	const categories = document.querySelectorAll(".category");
 	categories.forEach((transport) => transport.classList.remove("ctgActive"));
 	const categoryValue = document.querySelector(
-		`[data-value="${categoryId}"]`
+		`[data-value="${transportationId}"]`
 	);
 	if (categoryValue) {
 		categoryValue.classList.add("ctgActive");
@@ -69,6 +69,8 @@ function selectCategory(categoryId) {
 
 	// Enable or disable Next button based on form validation
 	validateForm();
+
+	await loadAccommodation(transportationId);
 }
 
 function showForm(formNumber) {
@@ -282,14 +284,25 @@ const setupTransportation = async (transports) => {
 			div.appendChild(button);
 			section.appendChild(div);
 		});
-
-		// Get Accommodation Data by Transportation type
-		document
-			.getElementById("transport")
-			.addEventListener("click", async (event) => {
-				console.log(event.currentTarget);
-			});
 	} catch (error) {
 		console.error("Error:", error);
+	}
+};
+
+const loadAccommodation = async (transportationId) => {
+	try {
+		const response = await fetch(`${API_URL}/accommodation`);
+		const accommodations = await response.json();
+		console.log(accommodations);
+
+		const selector = document.getElementById("acmd");
+		accommodations.forEach((acmd) => {
+			const option = document.createElement("option");
+			option.value = acmd.id;
+			option.textContent = acmd.name;
+			selector.appendChild(option);
+		});
+	} catch (error) {
+		console.error(error);
 	}
 };
