@@ -239,9 +239,10 @@ const API_URL = "http://localhost:3000";
 
 document.addEventListener("DOMContentLoaded", () => {
 	fetchTransportation();
+	getDestination()
 });
 
-// Transportation API
+// Get Transportation data
 const fetchTransportation = async () => {
 	try {
 		const response = await fetch(`${API_URL}/transport`);
@@ -260,6 +261,7 @@ const setupTransportation = async (transports) => {
 			const div = document.createElement("div");
 			div.classList.add("category", "icon-transport");
 			div.setAttribute("data-value", data.id);
+			div.setAttribute("id", data.id);
 			div.setAttribute("onclick", `selectCategory(${data.id})`);
 
 			const button = document.createElement("button");
@@ -285,6 +287,7 @@ const setupTransportation = async (transports) => {
 	}
 };
 
+// Get Accommodation Data
 const loadAccommodation = async (transportationId) => {
 	try {
 		const response = await fetch(
@@ -306,12 +309,6 @@ const loadAccommodation = async (transportationId) => {
 		console.error(error);
 	}
 };
-
-// const transportSelect = document.getElementById("transport");
-// transportSelect.addEventListener("change", (event) => {
-// 	const transportationId = event.currentTarget;
-// 	loadAccommodation(transportationId);
-// });
 
 const accommodationPrice = async (transportationId) => {
 	const acmdSelect = document.getElementById("acmd");
@@ -335,3 +332,40 @@ const accommodationPrice = async (transportationId) => {
 
 const acmdSelect = document.getElementById("acmd");
 acmdSelect.addEventListener("change", accommodationPrice);
+
+// Get Destination data
+const getDestination = async () => {
+	try {
+		const response = await fetch(`${API_URL}/destination`);
+		const destinations = await response.json();
+		console.log(destinations);
+		displayDestinationFrom(destinations);
+		displayDestinationTo(destinations);
+	} catch (error) {
+		console.error("Error:", error);
+	}
+}
+
+function displayDestinationFrom(destinations) {
+	const selector = document.getElementById("from-dst");
+	selector.innerHTML = `<option value="" disabled selected>Choose accommodation</option>`;
+
+	destinations.forEach((dest) => {
+		const option = document.createElement("option");
+		option.value = dest.id;
+		option.textContent = dest.name;
+		selector.appendChild(option);
+	});
+};
+
+function displayDestinationTo(destinations) {
+	const selector = document.getElementById("to-dst");
+	selector.innerHTML = `<option value="" disabled selected>Choose accommodation</option>`;
+
+	destinations.forEach((dest) => {
+		const option = document.createElement("option");
+		option.value = dest.id;
+		option.textContent = dest.name;
+		selector.appendChild(option);
+	});
+};

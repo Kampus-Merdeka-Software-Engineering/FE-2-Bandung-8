@@ -81,11 +81,21 @@
             <div class="container">
               <div class="inpt-from">
                 <label for="from-dst">From</label>
-                <input type="text" id="from-dst" name="from-dst" oninput="validateForm()" required>
+                <select id="from-dst" name="from-dst" oninput="validateForm()" required>
+                  <option value="" disabled selected>Initial location</option>
+                </select>
+                <!-- <div class="select-dest">
+                  <i class="material-symbols-outlined">expand_more</i>
+                </div> -->
               </div>
               <div class="inpt-to">
                 <label for="to-dst">To</label>
-                <input type="text" id="to-dst" name="to-dst" oninput="validateForm()" required>
+                <select id="to-dst" name="to-dst" oninput="validateForm()" required>
+                  <option value="" disabled selected>Your destination</option>
+                </select>
+                <!-- <div class="select-dest">
+                  <i class="material-symbols-outlined">expand_more</i>
+                </div> -->
               </div>
             </div>
           </div>
@@ -97,7 +107,7 @@
                 <!-- <option value="1">Garuda Indonesia</option>
                 <option value="2">Lion Air</option> -->
               </select>
-              <div class="select-ic">
+              <div class="select-acmd">
                 <i class="material-symbols-outlined">expand_more</i>
               </div>
             </div>
