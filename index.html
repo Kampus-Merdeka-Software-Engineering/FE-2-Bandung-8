@@ -81,12 +81,9 @@
             <div class="container">
               <div class="inpt-from">
                 <label for="from-dst">From</label>
-                <select id="from-dst" name="from-dst" oninput="validateForm()" required>
+                <select id="from-dst" name="from-dst" oninput="validateForm()" aria-placeholder="Initial location" required>
                   <option value="" disabled selected>Initial location</option>
                 </select>
-                <!-- <div class="select-dest">
-                  <i class="material-symbols-outlined">expand_more</i>
-                </div> -->
               </div>
               <div class="inpt-to">
                 <label for="to-dst">To</label>
@@ -102,7 +99,7 @@
           <div class="form-sct acmd-form">
             <label for="acmd"><h5>Accommodation</h5></label> 
             <div class="select-container">
-              <select name="acmd" class="select-box" id="acmd" placeholder="Choose transportation" required>
+              <select name="acmd" class="select-box" id="acmd" required>
                 <option value="" disabled selected>Choose transportation</option>
                 <!-- <option value="1">Garuda Indonesia</option>
                 <option value="2">Lion Air</option> -->

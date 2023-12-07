@@ -47,15 +47,8 @@ function navHighlighter() {
 	});
 }
 
-
 // Progresive Book form section
 let selectedCategory = 0;
-const categoryNames = {
-  1: 'Flight',
-  2: 'Train',
-  3: 'Bus',
-  4: 'Ship'
-};
 
 async function selectCategory(transportationId) {
 	// Reset the form fields when switching categories
@@ -156,9 +149,13 @@ function buildSummary() {
 		cell2.innerHTML = ":";
 		cell3.innerHTML = value;
 	};
-
+	
 	// Selected category in summary
-	addRow("Category", categoryNames[selectedCategory]);
+	const selectedCategory = document.querySelector(".ctgActive");
+	console.log(selectedCategory);
+	const nameCategory = selectedCategory.querySelector("p p")
+	console.log(nameCategory);
+	addRow("Category", nameCategory.innerHTML);
 
 	// Form 2
 	form2Fields.forEach((field) => {
@@ -245,12 +242,12 @@ function resetForm() {
 }
 
 // Integrate Front End with Back End API
-const API_URL = "http://localhost:3000";
-// const API_URL = "https://be-2-bandung-8-production.up.railway.app";
+// const API_URL = "http://localhost:3000";
+const API_URL = "https://be-2-bandung-8-production.up.railway.app";
 
 document.addEventListener("DOMContentLoaded", () => {
 	fetchTransportation();
-	getDestination()
+	getDestination();
 });
 
 // Get Transportation data
@@ -260,6 +257,7 @@ const fetchTransportation = async () => {
 		const transports = await response.json();
 		console.log(transports);
 		setupTransportation(transports);
+		categoryNames(transports);
 	} catch (error) {
 		console.error("Error:", error);
 	}
@@ -272,7 +270,7 @@ const setupTransportation = async (transports) => {
 			const div = document.createElement("div");
 			div.classList.add("category", "icon-transport");
 			div.setAttribute("data-value", data.id);
-			div.setAttribute("id", data.id);
+			div.setAttribute("id", data.type);
 			div.setAttribute("onclick", `selectCategory(${data.id})`);
 
 			const button = document.createElement("button");
@@ -355,11 +353,11 @@ const getDestination = async () => {
 	} catch (error) {
 		console.error("Error:", error);
 	}
-}
+};
 
 function displayDestinationFrom(destinations) {
 	const selector = document.getElementById("from-dst");
-	selector.innerHTML = `<option value="" disabled selected>Choose accommodation</option>`;
+	selector.innerHTML = `<option value="" disabled selected>Initial location</option>`;
 
 	destinations.forEach((dest) => {
 		const option = document.createElement("option");
@@ -367,11 +365,11 @@ function displayDestinationFrom(destinations) {
 		option.textContent = dest.name;
 		selector.appendChild(option);
 	});
-};
+}
 
 function displayDestinationTo(destinations) {
 	const selector = document.getElementById("to-dst");
-	selector.innerHTML = `<option value="" disabled selected>Choose accommodation</option>`;
+	selector.innerHTML = `<option value="" disabled selected>Your destination</option>`;
 
 	destinations.forEach((dest) => {
 		const option = document.createElement("option");
@@ -379,4 +377,5 @@ function displayDestinationTo(destinations) {
 		option.textContent = dest.name;
 		selector.appendChild(option);
 	});
-};
+}
+
