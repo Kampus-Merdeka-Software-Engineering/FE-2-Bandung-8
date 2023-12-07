@@ -149,12 +149,10 @@ function buildSummary() {
 		cell2.innerHTML = ":";
 		cell3.innerHTML = value;
 	};
-	
+
 	// Selected category in summary
 	const selectedCategory = document.querySelector(".ctgActive");
-	console.log(selectedCategory);
-	const nameCategory = selectedCategory.querySelector("p p")
-	console.log(nameCategory);
+	const nameCategory = selectedCategory.querySelector("p p");
 	addRow("Category", nameCategory.innerHTML);
 
 	// Form 2
@@ -184,6 +182,9 @@ function buildSummary() {
 		).innerText;
 		addRow(label, field.value);
 	});
+
+	const price = document.getElementById("acmdPrice");
+	addRow("Price", price.textContent);
 
 	return summaryTable.outerHTML;
 }
@@ -216,12 +217,11 @@ function confirmForm() {
 	summaryContent.style.display = "none";
 	loadingContainer.style.display = "flex";
 
+	sendCheckout();
+
 	setTimeout(() => {
 		loadingContainer.style.display = "none";
 		successIcon.style.display = "block";
-
-		backButton.style.display = "inline-block";
-		confirmButton.style.display = "inline-block";
 
 		setTimeout(() => {
 			window.location.reload();
@@ -255,9 +255,7 @@ const fetchTransportation = async () => {
 	try {
 		const response = await fetch(`${API_URL}/transport`);
 		const transports = await response.json();
-		console.log(transports);
 		setupTransportation(transports);
-		categoryNames(transports);
 	} catch (error) {
 		console.error("Error:", error);
 	}
@@ -270,7 +268,7 @@ const setupTransportation = async (transports) => {
 			const div = document.createElement("div");
 			div.classList.add("category", "icon-transport");
 			div.setAttribute("data-value", data.id);
-			div.setAttribute("id", data.type);
+			div.setAttribute("id", data.id);
 			div.setAttribute("onclick", `selectCategory(${data.id})`);
 
 			const button = document.createElement("button");
@@ -303,7 +301,6 @@ const loadAccommodation = async (transportationId) => {
 			`${API_URL}/accommodation/${transportationId}`
 		);
 		const accommodations = await response.json();
-		console.log(accommodations);
 
 		const selector = document.getElementById("acmd");
 		selector.innerHTML = `<option value="" disabled selected>Choose accommodation</option>`;
@@ -347,7 +344,6 @@ const getDestination = async () => {
 	try {
 		const response = await fetch(`${API_URL}/destination`);
 		const destinations = await response.json();
-		console.log(destinations);
 		displayDestinationFrom(destinations);
 		displayDestinationTo(destinations);
 	} catch (error) {
@@ -379,3 +375,46 @@ function displayDestinationTo(destinations) {
 	});
 }
 
+const sendCheckout = async () => {
+	const selectedTransport =
+		document.querySelector(".ctgActive").dataset.value;
+	const transportationId = parseInt(selectedTransport);
+
+	const acmdValue = document.getElementById("acmd").value;
+	const accommodationId = parseInt(acmdValue);
+
+	const fromDestValue = document.getElementById("from-dst").value;
+	const fromDestId = parseInt(fromDestValue);
+
+	const toDestValue = document.getElementById("to-dst").value;
+	const toDestId = parseInt(toDestValue);
+
+	const dateValue = document.getElementById("date-input").value;
+	const date = new Date(dateValue).toISOString();
+
+	const name = document.getElementById("name").value;
+	const email = document.getElementById("email").value;
+	const phone = document.getElementById("phone").value;
+
+	// send data to API
+	try {
+		await fetch(`${API_URL}/checkout`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				transportationId,
+				accommodationId,
+				fromDestId,
+				toDestId,
+				date,
+				name,
+				email,
+				phone,
+			}),
+		}).then((response) => response.json());
+	} catch (error) {
+		console.error("Error checkout:", error);
+	}
+};
