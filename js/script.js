@@ -47,7 +47,16 @@ function navHighlighter() {
 	});
 }
 
+
 // Progresive Book form section
+let selectedCategory = 0;
+const categoryNames = {
+  1: 'Flight',
+  2: 'Train',
+  3: 'Bus',
+  4: 'Ship'
+};
+
 async function selectCategory(transportationId) {
 	// Reset the form fields when switching categories
 	resetForm();
@@ -66,6 +75,7 @@ async function selectCategory(transportationId) {
 	// Enable or disable Next button based on form validation
 	validateForm();
 
+	// Sync with choosen transportation
 	await loadAccommodation(transportationId);
 }
 
@@ -236,6 +246,7 @@ function resetForm() {
 
 // Integrate Front End with Back End API
 const API_URL = "http://localhost:3000";
+// const API_URL = "https://be-2-bandung-8-production.up.railway.app";
 
 document.addEventListener("DOMContentLoaded", () => {
 	fetchTransportation();
