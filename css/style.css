@@ -788,7 +788,8 @@ option {
 
 .cu-info {
 	display: flex;
-	gap: 200px;
+  flex-wrap: wrap;
+	gap: 100px;
 	justify-content: center;
 }
 
@@ -830,6 +831,7 @@ footer {
 .footer-left {
   width: 350px;
   margin-right: 150px;
+  margin-bottom: 50px;
 }
 
 .footer-left img {
